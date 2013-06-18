@@ -48,7 +48,7 @@ The OAUTH token should never expire. The rack app will make the access token req
     
 Optionally set the TIMEOUT variable
 
-    TIMEOUT=10 sets the timeout to 10s when accessing the twitter API, the default is 10 (only accepts integer values)
+    TIMEOUT=10 sets the timeout to 10s when accessing the twitter API, the default is 10 (accepts float or integer value)
 
 
 ### Twitter API Params

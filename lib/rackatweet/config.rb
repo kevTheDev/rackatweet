@@ -40,7 +40,7 @@ module Rackatweet
     end
     
     def self.timeout=(timeout)
-      @@timeout = timeout.to_i
+      @@timeout = timeout.to_f
     end
     
   end
