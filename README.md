@@ -1,6 +1,3 @@
-rackatweet
-==========
-
 # Rackatweet - Tweets as JSON via a rack app
 
 A very simple rack app to provide a twitter timeline as JSON.
@@ -86,10 +83,6 @@ Errors returned by the twitter API are handled as above.
 
 There are two additional errors, SocketError & TimeoutError both with a statusCode of 500
 
-    
-## Testing
-
-Run `rake test` to run the tests. A `Guardfile` is present to use with `Guard`.
 
 ## Thanks!
 
