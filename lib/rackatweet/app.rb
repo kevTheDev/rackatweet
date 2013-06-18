@@ -21,9 +21,10 @@ module Rackatweet
           timeline.tweets(timeline_params)
         }
       rescue Timeout::Error => e
-        json = JSON.parse("{\"errors\": [{\"message\": \"TimeoutError. Twitter not responding within #{timeout} seconds\", \"code\": 500}]}")
+        json = "{\"errors\": [{\"message\": \"TimeoutError. Twitter not responding within #{timeout} seconds\", \"code\": 500}]}"
       end
       
+      # We could change the status code here
       [200, {'Content-Type' => 'application/json'}, [json]]
     end
 
