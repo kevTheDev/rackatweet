@@ -8,10 +8,10 @@ module Rackatweet
       request = Rack::Request.new(env)
       
       timeline = Timeline.new({
-        consumer_key: TEST_CONSUMER_KEY,
-        consumer_secret: TEST_CONSUMER_SECRET,
-        oauth_token: TEST_OAUTH_TOKEN,
-        oauth_token_secret: TEST_OAUTH_TOKEN_SECRET
+        consumer_key: Config.consumer_key,
+        consumer_secret: Config.consumer_secret,
+        oauth_token: Config.oauth_token,
+        oauth_token_secret: Config.oauth_token_secret
       })
       
       timeline_params = timeline_params(request)

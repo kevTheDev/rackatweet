@@ -18,6 +18,30 @@ In `routes.rb`
     <AppName>::Application.routes.draw do
       match "/tweets.json", :to => Rackatweet::App.new
     end
+    
+Create a twitter application at: https://dev.twitter.com/apps
+
+Make a note of your consumer_key, consumer_secret, oauth_token, and oauth_token_secret
+
+If you are using Rails, then create an initializer like:
+
+    if defined?(Rackatweet)
+      Rackatweet::Config.consumer_key = ENV['CONSUMER_KEY']
+      Rackatweet::Config.consumer_secret = ENV['CONSUMER_SECRET']
+      Rackatweet::Config.oauth_token = ENV['OAUTH_TOKEN']
+      Rackatweet::Config.oauth_token_secret = ENV['OAUTH_TOKEN_SECRET']
+    end
+
+Start the rails server in development:
+    
+    CONSUMER_KEY=k6CTN1GQrctgHKv5nz9Dgg CONSUMER_SECRET=CwnPSXKph85qlc7hJ0RyxeaIBGdPwY367AvLU1Ysa3M OAUTH_TOKEN=15569673-BCnAfXMSIHp7fokQ9qNRrglqPBo2FvgowbvJziISw OAUTH_TOKEN_SECRET=bBsHBUF7IrFSlyOhPnTPwn6BWywcrl5z6LGX6QnbMs8 rails server
+
+Or on heroku add the following config variables:
+
+    CONSUMER_KEY
+    CONSUMER_SECRET
+    OAUTH_TOKEN
+    OAUTH_TOKEN_SECRET
 
 
 You can use any of the twitter API params in the URL like:
