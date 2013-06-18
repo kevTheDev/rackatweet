@@ -31,7 +31,11 @@ module Rackatweet
     def tweets(params={})
       begin
         response = access_token.request(:get, "https://api.twitter.com/1.1/statuses/user_timeline.json?#{hash_to_param(params)}")
-        "{\"tweets\": #{response.body} }"
+        if response.body.include?('errors')
+          response.body
+        else
+          "{\"tweets\": #{response.body} }"
+        end
       rescue SocketError => e  # if the site is down
         '{"errors": [{"message": "Sorry, it looks like twitter or the network is down", "code": 500}]}'
       end
