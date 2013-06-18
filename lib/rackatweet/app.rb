@@ -2,19 +2,27 @@ require 'json'
 
 module Rackatweet
   class App
-    attr_writer :geo_ip
 
     def call(env)
       request = Rack::Request.new(env)
       
       number_of_tweets = number_of_tweets(request)
       
+      TEST_CONSUMER_KEY       = 'k6CTN1GQrctgHKv5nz9Dgg'
+      TEST_CONSUMER_SECRET    = 'CwnPSXKph85qlc7hJ0RyxeaIBGdPwY367AvLU1Ysa3M'
+      TEST_OAUTH_TOKEN        = '15569673-BCnAfXMSIHp7fokQ9qNRrglqPBo2FvgowbvJziISw'
+      TEST_OAUTH_TOKEN_SECRET = 'bBsHBUF7IrFSlyOhPnTPwn6BWywcrl5z6LGX6QnbMs8'
       
       
-      # fetch the tweets
-
+      timeline = Timeline.new({
+        consumer_key: TEST_CONSUMER_KEY
+        consumer_secret: TEST_CONSUMER_SECRET
+        oauth_token: TEST_OAUTH_TOKEN
+        oauth_token_secret: TEST_OAUTH_TOKEN_SECRET
+      })
       
-      # 1 twitter_username = from params
+      tweets = timeline.tweets
+      
       
       # number_of_tweets = from params
       
@@ -22,9 +30,9 @@ module Rackatweet
       
       # 3 stick in json format
 
-      # json = {
-#         country: country
-#       }.to_json
+      json = {
+        tweets: tweets
+      }.to_json
 
       [200, {'Content-Type' => 'application/json'}, [json]]
     end
@@ -33,9 +41,9 @@ module Rackatweet
 
     def number_of_tweets(request)
       begin
-        request.params.fetch('tweet_count')
+        return request.params.fetch('tweet_count')
       rescue KeyError => e
-        # do something here
+        return 1
       end
     end
     
