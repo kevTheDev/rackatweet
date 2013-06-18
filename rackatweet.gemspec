@@ -3,7 +3,7 @@ require "rackatweet/version"
 
 Gem::Specification.new do |s|
   s.name        = "rackatweet"
-  s.version     = GeoIPJson::VERSION
+  s.version     = Rackatweet::VERSION
   s.authors     = ["Kevin Edwards"]
   s.email       = ["kev.j.edwards@gmail.com"]
   s.homepage    = ""
