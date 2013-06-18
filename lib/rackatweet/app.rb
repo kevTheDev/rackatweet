@@ -1,5 +1,5 @@
-
 require 'json'
+require 'timeout'
 
 module Rackatweet
   class App
@@ -15,9 +15,19 @@ module Rackatweet
       })
       
       timeline_params = timeline_params(request)
-      tweets          = timeline.tweets(timeline_params)
       
-      [200, {'Content-Type' => 'application/json'}, [tweets]]
+      # Set timeout value to 10s
+      timeout = 10
+      
+      begin
+        json = Timeout::timeout(timeout) {
+          timeline.tweets(timeline_params)
+        }
+      rescue Timeout::Error => e
+        json = JSON.parse("{\"errors\": [{\"message\": \"TimeoutError. Twitter not responding within #{timeout} seconds\", \"code\": 500}]}")
+      end
+      
+      [200, {'Content-Type' => 'application/json'}, [json]]
     end
 
     private
