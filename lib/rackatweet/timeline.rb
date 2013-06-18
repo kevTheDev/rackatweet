@@ -28,10 +28,19 @@ module Rackatweet
       @access_token ||= OAuth::AccessToken.from_hash(consumer, oauth_token_hash )
     end
   
-    def tweets(count=1)
+    def tweets(params={})
+      Rails.logger.info "https://api.twitter.com/1.1/statuses/user_timeline.json?#{hash_to_param(params)}"
+      
       # use the access token as an agent to get the home timeline
-      response = access_token.request(:get, "https://api.twitter.com/1.1/statuses/user_timeline.json?&include_rts=false&count=#{count}")
+      response = access_token.request(:get, "https://api.twitter.com/1.1/statuses/user_timeline.json?#{hash_to_param(params)}")
       JSON.parse(response.body)
+    end
+    
+    # File activesupport/lib/active_support/core_ext/object/to_param.rb, line 50
+    def hash_to_param(hash={}, namespace = nil)
+      hash.collect do |key, value|
+        value.to_query(namespace ? "#{namespace}[#{key}]" : key)
+      end.sort * '&'
     end
   
   end
