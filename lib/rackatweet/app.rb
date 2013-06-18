@@ -26,10 +26,6 @@ module Rackatweet
 
     private
     
-    # Options that we will pass via AJAX
-    
-    # can we have the oauth config here as well?
-
     def count(request)
       begin
         return request.params.fetch('count')

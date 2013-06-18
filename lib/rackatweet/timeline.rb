@@ -29,8 +29,6 @@ module Rackatweet
     end
   
     def tweets(params={})
-      Rails.logger.info "https://api.twitter.com/1.1/statuses/user_timeline.json?#{hash_to_param(params)}"
-      
       # use the access token as an agent to get the home timeline
       response = access_token.request(:get, "https://api.twitter.com/1.1/statuses/user_timeline.json?#{hash_to_param(params)}")
       JSON.parse(response.body)
