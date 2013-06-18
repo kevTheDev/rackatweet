@@ -17,11 +17,7 @@ module Rackatweet
       timeline_params = timeline_params(request)
       tweets          = timeline.tweets(timeline_params)
       
-      json = {
-        tweets: tweets
-      }.to_json
-
-      [200, {'Content-Type' => 'application/json'}, [json]]
+      [200, {'Content-Type' => 'application/json'}, [tweets]]
     end
 
     private
