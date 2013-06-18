@@ -28,14 +28,19 @@ module Rackatweet
       @access_token ||= OAuth::AccessToken.from_hash(consumer, oauth_token_hash )
     end
   
-    def tweets(params={})
+    def tweets(params={}, timeout=10)
       begin
-        response = access_token.request(:get, "https://api.twitter.com/1.1/statuses/user_timeline.json?#{hash_to_param(params)}")
+        response = Timeout::timeout(timeout) do
+          access_token.request(:get, "https://api.twitter.com/1.1/statuses/user_timeline.json?#{hash_to_param(params)}")
+        end
+        
         if response.body.include?('errors')
           response.body
         else
           "{\"tweets\": #{response.body} }"
         end
+      rescue Timeout::Error => e
+       "{\"errors\": [{\"message\": \"TimeoutError. Twitter not responding within #{timeout} seconds\", \"code\": 500}]}"
       rescue SocketError => e  # if the site is down
         '{"errors": [{"message": "Sorry, it looks like twitter or the network is down", "code": 500}]}'
       end
