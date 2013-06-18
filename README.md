@@ -15,7 +15,10 @@ In `routes.rb`
     <AppName>::Application.routes.draw do
       match "/tweets.json", :to => Rackatweet::App.new
     end
-    
+
+
+#### OAuth
+
 Create a twitter application at: https://dev.twitter.com/apps
 
 Make a note of your consumer_key, consumer_secret, oauth_token, and oauth_token_secret
@@ -41,9 +44,14 @@ Or on heroku add the following config variables:
     OAUTH_TOKEN
     OAUTH_TOKEN_SECRET
     
+The OAUTH token should never expire. The rack app will make the access token request only once. So if you restart the server it will happen again.
+    
 Optionally set the TIMEOUT variable
 
     TIMEOUT=10 sets the timeout to 10s when accessing the twitter API, the default is 10 (only accepts integer values)
+
+
+### Twitter API Params
 
 
 You can use any of the twitter API params in the URL like:
