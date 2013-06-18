@@ -67,6 +67,26 @@ See: https://dev.twitter.com/docs/api/1.1/get/statuses/user_timeline
     contributor_details
     include_rts
     
+    
+Responses:
+
+Successful response:
+
+    {
+      "tweets": []
+    }
+
+Error:
+
+    {
+      "errors": ["message": "Error message", "code": statusCode]
+    }
+
+Errors returned by the twitter API are handled as above.
+
+There are two additional errors, SocketError & TimeoutError both with a statusCode of 500
+
+    
 ## Testing
 
 Run `rake test` to run the tests. A `Guardfile` is present to use with `Guard`.
