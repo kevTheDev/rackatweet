@@ -29,9 +29,13 @@ module Rackatweet
     end
   
     def tweets(params={})
-      # use the access token as an agent to get the home timeline
-      response = access_token.request(:get, "https://api.twitter.com/1.1/statuses/user_timeline.json?#{hash_to_param(params)}")
-      JSON.parse(response.body)
+      begin
+        response = access_token.request(:get, "https://api.twitter.com/1.1/statuses/user_timeline.json?#{hash_to_param(params)}")
+        JSON.parse(response.body)
+      rescue SocketError => e  # if the site is down
+        Rails.logger.info "Caught error: #{e}"
+        JSON.parse('{}')
+      end
     end
     
     # File activesupport/lib/active_support/core_ext/object/to_param.rb, line 50
