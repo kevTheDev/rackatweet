@@ -19,6 +19,7 @@ GEM
     lumberjack (1.0.3)
     method_source (0.8.1)
     minitest (5.0.4)
+    oauth (0.4.7)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -41,4 +42,5 @@ DEPENDENCIES
   guard
   guard-minitest
   minitest
+  oauth (~> 0.4.7)
   rack-test

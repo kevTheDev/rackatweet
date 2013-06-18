@@ -6,3 +6,5 @@ group :development do
   gem 'guard'
   gem 'guard-minitest'
 end
+
+gem "oauth", "~> 0.4.7"
