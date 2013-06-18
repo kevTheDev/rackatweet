@@ -16,11 +16,8 @@ module Rackatweet
       
       timeline_params = timeline_params(request)
       
-      # Set timeout value to 10s
-      timeout = 10
-      
       begin
-        json = Timeout::timeout(timeout) {
+        json = Timeout::timeout(Config.timeout) {
           timeline.tweets(timeline_params)
         }
       rescue Timeout::Error => e

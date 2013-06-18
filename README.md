@@ -30,6 +30,7 @@ If you are using Rails, then create an initializer like:
       Rackatweet::Config.consumer_secret = ENV['CONSUMER_SECRET']
       Rackatweet::Config.oauth_token = ENV['OAUTH_TOKEN']
       Rackatweet::Config.oauth_token_secret = ENV['OAUTH_TOKEN_SECRET']
+      Rackatweet::Config.timeout = ENV['TIMEOUT'] # optional - default is 10s
     end
 
 Start the rails server in development:
@@ -42,6 +43,10 @@ Or on heroku add the following config variables:
     CONSUMER_SECRET
     OAUTH_TOKEN
     OAUTH_TOKEN_SECRET
+    
+Optionally set the TIMEOUT variable
+
+    TIMEOUT=10 sets the timeout to 10s when accessing the twitter API, the default is 10 (only accepts integer values)
 
 
 You can use any of the twitter API params in the URL like:

@@ -35,6 +35,14 @@ module Rackatweet
       @@oauth_token_secret = oauth_token_secret
     end
     
+    def self.timeout
+      @@timeout ||= 10
+    end
+    
+    def self.timeout=(timeout)
+      @@timeout = timeout.to_i
+    end
+    
   end
   
 end
