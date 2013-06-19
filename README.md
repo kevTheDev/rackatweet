@@ -94,5 +94,7 @@ There are two additional errors, SocketError & TimeoutError both with a statusCo
 
 ## Thanks!
 
-Jordan Elver for the idea
+To <a href="http://wearebeef.co.uk/">Beef</a> the benefactors of this project.
+
+& Jordan Elver for the idea
 * https://github.com/jordelver
