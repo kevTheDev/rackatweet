@@ -20,7 +20,7 @@ module Rackatweet
       status_code     = json.include?('errors') ? 500 : 200
       
       # We could change the status code here
-      [status_code, {'Content-Type' => 'application/json'}, [json]]
+      [status_code, {'Content-Type' => 'application/json', 'Cache-Control' => "public, max-age=#{Config.cache_expires_in}"}, [json]]
     end
 
     private
