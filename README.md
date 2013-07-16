@@ -31,7 +31,7 @@ If you are using Rails, then create an initializer like:
       Rackatweet::Config.oauth_token = ENV['OAUTH_TOKEN']
       Rackatweet::Config.oauth_token_secret = ENV['OAUTH_TOKEN_SECRET']
       Rackatweet::Config.timeout = ENV['TIMEOUT'] # optional - default is 10s
-      Rackatweet::Config.cache_expires_in = ENV['CACHE_EXPIRES_IN'] # optional - default is 3600s (1 hour)
+      Rackatweet::Config.cache_expires_in = ENV['CACHE_EXPIRES_IN'] # optional - default is 900s (15 minutes)
     end
 
 Start the rails server in development:
