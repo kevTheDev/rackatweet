@@ -31,6 +31,7 @@ If you are using Rails, then create an initializer like:
       Rackatweet::Config.oauth_token = ENV['OAUTH_TOKEN']
       Rackatweet::Config.oauth_token_secret = ENV['OAUTH_TOKEN_SECRET']
       Rackatweet::Config.timeout = ENV['TIMEOUT'] # optional - default is 10s
+      Rackatweet::Config.cache_expires_in = ENV['CACHE_EXPIRES_IN'] # optional - default is 3600s (1 hour)
     end
 
 Start the rails server in development:
@@ -49,6 +50,10 @@ The OAUTH token should never expire. The rack app will make the access token req
 Optionally set the TIMEOUT variable
 
     TIMEOUT=10 sets the timeout to 10s when accessing the twitter API, the default is 10 (accepts float or integer value)
+    
+Optionally set the CACHE_EXPIRES_IN variable
+
+    CACHE_EXPIRES_IN=3600 sets the cache of tweets to expire in 1 hour. After 1 hour, the Twitter API will be hit again
 
 
 ### Twitter API Params
