@@ -35,7 +35,7 @@ If you are using Rails, then create an initializer like:
 
 Start the rails server in development:
     
-    CONSUMER_KEY=YOUR_KEY CONSUMER_SECRET=YOUR_SECRET OAUTH_TOKEN=YOUR_TOKEN OAUTH_TOKEN_SECRET=YOUR_TOKEN_SECRET rails server
+    CONSUMER_KEY=XXX CONSUMER_SECRET=XXX OAUTH_TOKEN=XXX OAUTH_TOKEN_SECRET=XXX rails server
 
 Or on heroku add the following config variables:
 
