@@ -40,7 +40,7 @@ module Rackatweet
     end
     
     def self.timeout=(timeout)
-      @@timeout = timeout.to_f
+      @@timeout = timeout
     end
     
     def self.cache_expires_in
@@ -48,7 +48,7 @@ module Rackatweet
     end
     
     def self.cache_expires_in=(cache_expires_in)
-      @@cache_expires_in = cache_expires_in.to_f
+      @@cache_expires_in = cache_expires_in
     end
     
     

@@ -1,10 +1,7 @@
 source :rubygems
 
-group :development do
-  gem 'minitest'
-  gem 'rack-test'
-  gem 'guard'
-  gem 'guard-minitest'
+group :test, :development do
+  gem "rspec", "~> 2.14.1"
 end
 
 gem "oauth", "~> 0.4.7"
